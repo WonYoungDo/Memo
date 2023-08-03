@@ -42,4 +42,19 @@ public class UserRestController {
 		return resultMap;
 	}
 	
+	
+	// 로그인
+	@PostMapping("/login")
+	public Map<String, String> login(
+			@RequestParam("loginId") String loginId
+			, @RequestParam("password") String password) {
+		
+		Map<String, String> resultMap = new HashMap<>();
+		if() {
+			
+		} else {
+			
+		}
+	}
+	
 }

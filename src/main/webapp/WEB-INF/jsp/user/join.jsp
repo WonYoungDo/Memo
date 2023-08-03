@@ -10,7 +10,7 @@
 </head>
 <body>
 	<div id="wrap">
-		
+		<jsp:include page="header.jsp"/>
 		<section class="contents d-flex justify-content-center">
 			<div class="join-box">
 				<h1 class="text-center mt-4">회원가입</h1>
@@ -22,10 +22,7 @@
 				<button type="button" class="btn btn-secondary btn-block mt-4" id="joinBtn">가입</button>
 			</div>
 		</section>
-		
-		<footer class="d-flex align-items-center justify-content-center">
-			<div class="text-secondary small">Copyright 2018. memo all rights reserved.</div>
-		</footer>
+		<jsp:include page="footer.jsp"/>
 	</div>
 
 	<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
