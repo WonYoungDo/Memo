@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +11,7 @@
 </head>
 <body>
 	<div id="wrap">
-		<jsp:include page="header.jsp"/>
+		<c:import url="/WEB-INF/jsp/include/header.jsp"/>
 		<section class="contents d-flex justify-content-center">
 			<div class="join-box">
 				<h1 class="text-center mt-4">회원가입</h1>
@@ -22,7 +23,7 @@
 				<button type="button" class="btn btn-secondary btn-block mt-4" id="joinBtn">가입</button>
 			</div>
 		</section>
-		<jsp:include page="footer.jsp"/>
+		<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
 	</div>
 
 	<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
@@ -66,7 +67,7 @@
 					, data:{"loginId":id, "password":password, "name":name, "email":email}
 					, success:function(data) {
 						if(data.result == "success") {
-							location.href = "/user/login-view"
+							location.href = "/user/login-view";
 						} else {
 							alert("회원가입 실패");
 						}

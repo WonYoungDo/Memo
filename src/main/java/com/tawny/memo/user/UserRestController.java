@@ -20,7 +20,7 @@ public class UserRestController {
 	private UserService userService;
 	
 	
-	// 회원가입
+	// 회원가입 기능
 	@PostMapping("/join")
 	public Map<String, String> join(
 			@RequestParam("loginId") String loginId
@@ -43,18 +43,21 @@ public class UserRestController {
 	}
 	
 	
-	// 로그인
+	// 로그인 기능
 	@PostMapping("/login")
 	public Map<String, String> login(
 			@RequestParam("loginId") String loginId
 			, @RequestParam("password") String password) {
 		
+		User user = userService.getUser(loginId, password);
+		
 		Map<String, String> resultMap = new HashMap<>();
-		if() {
-			
+		if(user != null) {
+			resultMap.put("result", "success");
 		} else {
-			
+			resultMap.put("result", "fail");
 		}
+		return resultMap;
 	}
 	
 }
