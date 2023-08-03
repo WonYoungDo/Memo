@@ -44,8 +44,9 @@ public class UserService {
 	// 전달 받은 아이디와 비밀번호가 존재하는지 
 	public User getUser(String loginId, String password) {
 		
-		List<User> userList = userRepository.findByLoginIdAndPassword(loginId, password);
+		String ecryptPassword = EncryptUtils.md5(password);
 		
+		List<User> userList = userRepository.findByLoginIdAndPassword(loginId, password);
 		
 		if(userList.isEmpty()) { // 비워진 경우(조회가 안 될 경우)
 			return null;
