@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -70,6 +71,23 @@ public class UserRestController {
 			
 		} else {
 			resultMap.put("result", "fail");
+		}
+		return resultMap;
+	}
+	
+	
+	// 중복확인 기능
+	@GetMapping("/duplicate-id")
+	public Map<String, Boolean> isDuplication(@RequestParam("loginId") String loginId) {
+		
+		boolean isDuplicate = userService.isDuplicateId(loginId);
+	
+		Map<String, Boolean> resultMap = new HashMap<>();
+		
+		if(isDuplicate) {
+			resultMap.put("isDuplicate", true);
+		} else {
+			resultMap.put("isDuplicate", false);
 		}
 		return resultMap;
 	}

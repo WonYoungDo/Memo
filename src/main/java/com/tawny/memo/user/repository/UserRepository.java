@@ -12,4 +12,9 @@ public interface UserRepository extends JpaRepository<User, Integer>{
 	
 	// 로그인 화면에서 아이디와 비밀번호가 일치하는지 확일할 수 있는 메소드를 생성
 	public List<User> findByLoginIdAndPassword(String loginId, String password);
+
+	// 중복확인 메소드 
+	// SELECT count(1) ... WHERE `login` = #{loginId};
+	public int countByLoginId(String loginId);
+	
 }

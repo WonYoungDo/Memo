@@ -54,6 +54,19 @@ public class UserService {
 			return userList.get(0);
 		}
 	}
+	
+	
+	// 중복확인 (일치하는 행의 개수를 확인)  
+	public boolean isDuplicateId(String loginId) {
+		int count = userRepository.countByLoginId(loginId);
 
+//		if(count == 0) { // 중복됨
+//			return false;
+//		} else { // 중복되지 않음
+//			return true;
+//		}
+		return count != 0;
+	
+	}
 
 }

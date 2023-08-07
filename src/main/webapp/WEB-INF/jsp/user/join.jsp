@@ -32,6 +32,53 @@
 	<script>
 		$(document).ready(function() {
 			
+			// 중복확인이 어떤 상태인지 나타내는 변수
+			var isChecked = false;
+			
+			// 중복확인 여부를 저장하는 변수
+			var isDuplicateId = true;
+			
+			$("#loginIdInput").on("input", function() {
+				// 중복확인과 관련된 모든 상황을 초기화 한다.
+				isChecked = false;
+				isDuplicateId	= true;
+			});
+			
+			
+			// 중복 확인 버튼
+			$("#Btn").on("click", function() {
+				let id = $("#idInput").val();
+				
+				if(id == "") {
+					alert("아이디를 입력하세요.");	
+					return;
+				}
+				
+				$.ajax({
+					type:"get"
+					, url:"/user/duplicate-id"
+					, data:{"loginId":id}
+					, success:function() {
+						
+						// 중복 확인 상태 
+						isChecked = true;
+						
+						isDuplicateId = data.isDuplicate;
+						
+						// 중복됨이 확인 되었을 때 
+						if(data.isDuplicate) {
+							alert("이미 사용중인 아이디가 있습니다.");							
+						} else { // 중볻되지 않았을 때
+						 	alert("사용 가능한 아이디입니다.");
+						}
+					}
+					, error:function() {
+						alert("중복확인 에러");
+					}
+				});
+			});
+			
+			// 회원 가입 버튼 
 			$("#joinBtn").on("click", function() {
 				let id = $("#idInput").val();
 				let password = $("#passwordInput").val();
@@ -44,6 +91,19 @@
 					alert("아이디를 입력하세요.");	
 					return;
 				}
+				
+				// 중복 확인 상태가 false일 경우
+				if(!isChecked) { // true false는 뒤에 느낌표로 나타낸다.
+					alert("아이디 중복확인을 해주세요.");
+					return;
+				}
+				
+				// 중복된 아이디인 경우
+				if(isDuplicateId) {
+					alert("중복된 아이디입니다.");
+					return;
+				}
+				
 				if(password == "") {
 					alert("비밀번호를 입력하세요.");	
 					return;
@@ -76,13 +136,7 @@
 						alert("가입 에러");
 					}
 				});
-				
-				
-				
-				
-				
-				
-				
+
 			});
 		});
 	
