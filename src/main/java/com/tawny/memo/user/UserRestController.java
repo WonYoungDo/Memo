@@ -32,7 +32,7 @@ public class UserRestController {
 			, @RequestParam("email") String email
 			, @RequestParam("name") String name) {
 		
-		User user = userService.addUser(loginId, password, name, email);
+		User user = userService.addUser(loginId, password, name, email, name);
 		
 		Map<String, String>	resultMap = new HashMap<>();
 		if(user != null) {

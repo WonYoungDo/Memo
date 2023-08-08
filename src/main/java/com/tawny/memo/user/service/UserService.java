@@ -21,14 +21,15 @@ public class UserService {
 			String loginId
 			, String password
 			, String name
-			, String email) {
+			, String email
+			, String phoneNumber) {
 		
 		// password를 전달 받고 암호화 과정을 거처서 user에 저장
 		String ecryptUtils =  EncryptUtils.md5(password);
 		
 		User user =  User.builder()
 		.loginId(loginId)
-		.password(password)
+		.password(ecryptUtils)
 		.name(name)
 		.email(email)
 		.build();
@@ -60,9 +61,9 @@ public class UserService {
 	public boolean isDuplicateId(String loginId) {
 		int count = userRepository.countByLoginId(loginId);
 
-//		if(count == 0) { // 중복됨
+//		if(count == 0) { // 중복되지 않음
 //			return false;
-//		} else { // 중복되지 않음
+//		} else { // 중복됨
 //			return true;
 //		}
 		return count != 0;
