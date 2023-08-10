@@ -1,7 +1,11 @@
 package com.tawny.memo.post.repository;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+
+import com.tawny.memo.post.domain.Post;
 
 @Repository
 public interface PostRepository {
@@ -13,7 +17,9 @@ public interface PostRepository {
 			, @Param("contents") String contens
 			, @Param("imagePath") String imagePath);
 
-
+	public List<Post> selectPostList(@Param("userId") int userId);
+					  
+	
 
 
 }

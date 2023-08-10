@@ -72,11 +72,11 @@
 					, data:formData
 					, processData:false // 파일 업로드 옵션
 					, contentType:false // 파일 업로드 옵션
-					, success:function(date) {
+					, success:function(data) {
 						if(data.result == "success") {
 							location.href = "/post/list-view";
 						} else {
-							alert("저장 실패")
+							alert("저장 실패");
 						}
 					}
 					, error:function() {

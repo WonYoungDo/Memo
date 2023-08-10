@@ -1,12 +1,13 @@
 package com.tawny.memo.post.service;
 
-import java.util.Map;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.tawny.memo.common.FileManager;
+import com.tawny.memo.post.domain.Post;
 import com.tawny.memo.post.repository.PostRepository;
 
 @Service
@@ -28,8 +29,13 @@ public class PostService {
 		
 		// 접근 경로를 table에 저장
 		return postRepository.insertPost(userId, title, contents, imagePath);
-		
-			
-		
 	}
+	
+	
+	
+	public List<Post> getPostList(int userId) {
+		return postRepository.selectPostList(userId);
+	}
+	
+	
 }
