@@ -15,7 +15,10 @@
 		<section class="contents d-flex justify-content-center">
 			<div class="join-box">
 				<h1 class="text-center mt-4">회원가입</h1>
-				<input type="text" placeholder="아이디" class="form-control mt-4" id="idInput">
+				<div class="d-flex justify-content-between mt-4">
+					<input type="text" placeholder="아이디" class="form-control col-8" id="idInput">
+					<button type="button" class="btn btn-secondary col-3 p-0" id="duplicateBtn">중복확인</button>
+				</div>
 				<input type="password" placeholder="비밀번호" class="form-control mt-4" id="passwordInput">
 				<input type="password" placeholder="비밀번호 확인" class="form-control mt-4" id="passwordConfirmInput">
 				<input type="text" placeholder="이름" class="form-control mt-4" id="nameInput">
@@ -46,7 +49,7 @@
 			
 			
 			// 중복 확인 버튼
-			$("#Btn").on("click", function() {
+			$("#duplicateBtn").on("click", function() {
 				let id = $("#idInput").val();
 				
 				if(id == "") {
@@ -58,7 +61,7 @@
 					type:"get"
 					, url:"/user/duplicate-id"
 					, data:{"loginId":id}
-					, success:function() {
+					, success:function(data) {
 						
 						// 중복 확인 상태 
 						isChecked = true;
