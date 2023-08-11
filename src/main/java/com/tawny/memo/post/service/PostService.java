@@ -32,10 +32,13 @@ public class PostService {
 	}
 	
 	
-	
+	// 메모 리스트 (저장된 메모를 모두 가져오는 기능)
 	public List<Post> getPostList(int userId) {
 		return postRepository.selectPostList(userId);
 	}
 	
-	
+	// 메보 보기 (아이디 값이 일치하는 특정 한 행의 정보를 가져온다.)
+	public Post getPost(int id) { // 아이디 기반으로 조회는 한 행을 리턴한다.
+		return postRepository.selectPost(id);
+	}
 }

@@ -10,6 +10,7 @@ import lombok.Setter;
 public class Post {
 	
 	private int id;
+	private int userId;
 	private String loginId;
 	private String password;
 	private String name;

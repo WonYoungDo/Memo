@@ -38,4 +38,19 @@
 		ORDER BY 
 			`id` DESC;
  	</select>
+ 	
+ 	<select id="selectPost" parameterType="int" resultType="com.tawny.memo.post.domain.Post">
+ 		SELECT
+ 			`id`
+			, `userId`
+			, `title`
+			, `contents`
+			, `imagePath`
+			, `createdAT`
+			, `updatedAT`
+		FROM
+			`post`
+		WHERE
+			`id` = #{id}
+ 	</select>
  </mapper>

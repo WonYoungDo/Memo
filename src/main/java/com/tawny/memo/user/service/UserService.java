@@ -47,7 +47,7 @@ public class UserService {
 		
 		String ecryptPassword = EncryptUtils.md5(password);
 		
-		List<User> userList = userRepository.findByLoginIdAndPassword(loginId, password);
+		List<User> userList = userRepository.findByLoginIdAndPassword(loginId, ecryptPassword);
 		
 		if(userList.isEmpty()) { // 비워진 경우(조회가 안 될 경우)
 			return null;
