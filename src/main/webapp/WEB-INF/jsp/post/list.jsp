@@ -14,27 +14,40 @@
 	<div id="wrap">
 		<c:import url="/WEB-INF/jsp/include/header.jsp"/>
 		<section class="contents">
-			<h1 class="text-center pt-2">메모리스트</h1>
-			<table class="table text-center">
-				<thead>
-				<tr>
-					<th>No.</th>
-					<th>제목</th>
-					<th>작성 시간</th>
-				</tr>
-				</thead>
-				<tbody>
-					<c:forEach var="post" items="${postList }">
-					<tr>
-						<td>${post.id }</td>
-						<td><a></a>${post.title }</td>
-						<td><fmt:formatDate value="${post.createdAT }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-					</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-			<div class="d-flex justify-content-end">
-				<a href="/post/create-view" class="btn btn-secondary">작성</a>			
+			<div class="memolist px-5">
+				<!-- 제목 -->
+				<div class="memolist-title text-center my-2">
+					<h1>메모리스트</h1>
+				</div>
+				<!-- 제목 -->
+				<!-- 메모 리스트 -->
+				<div class="momolist-list">
+					<table class="table text-center">
+						<thead>
+						<tr>
+							<th>No.</th>
+							<th>제목</th>
+							<th>작성 시간</th>
+						</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="post" items="${postList }">
+							<tr>
+								<td>${post.id }</td>
+								<td><a href="/post/detail/${post.id }">${post.title }</a></td>
+								<td><fmt:formatDate value="${post.createdAT }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+							</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
+				<!-- 메모 리스트 -->
+				<!-- 작성 버튼 -->
+				<div class="memolist-button d-flex justify-content-end">
+					<a href="/post/create-view" class="btn btn-secondary">작성</a>			
+				</div>
+				<!-- 작성 버튼 -->
+				
 			</div>
 		</section>
 		<c:import url="/WEB-INF/jsp/include/footer.jsp"/>

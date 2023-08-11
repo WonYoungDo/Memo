@@ -11,10 +11,9 @@ public class Post {
 	
 	private int id;
 	private int userId;
-	private String loginId;
-	private String password;
-	private String name;
-	private String email;
+	private String title;
+	private String contents;
+	private String imagePath;
 	private Date createdAT;
 	private Date updatedAT;
 }

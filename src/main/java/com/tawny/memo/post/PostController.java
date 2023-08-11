@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.tawny.memo.post.domain.Post;
 import com.tawny.memo.post.service.PostService;
@@ -42,8 +42,8 @@ public class PostController {
 	}
 	
 	// 메모 세부사항 보기 화면
-	@GetMapping("/detail-view")
-	public String detail(@RequestParam("id") int id, Model model) {
+	@GetMapping("/detail-view/{id}")
+	public String detail(@PathVariable("id") int id, Model model) {
 		
 		Post post = postService.getPost(id);
 		
