@@ -9,11 +9,13 @@ header {
 	height: 80px;
 	background-color: #dddddd;
 }
-
-.contents > .memo-input {
+.content > memo-input {
 	height: 500px;
 }
 
+.content > .detail-image {
+	height: 200px;
+}
 
 .contents > .join-box {
 	width: 300px;

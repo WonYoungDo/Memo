@@ -12,30 +12,40 @@
 <body>
 	<div id="wrap">
 		<c:import url="/WEB-INF/jsp/include/header.jsp"/>
-		
-		
 		<section class="contents d-flex justify-content-center">
 			<div class="memo-input col-8">
 				<h1 class="text-center font-weight-bold pt-3 pb-2">메모 보기</h1>
+				<!-- title -->
 				<div class="d-flex justify-content-center align-items-center pb-2">
 					<h4 class="col-2 font-weight-bold mt-2">제목 : </h4>
-					<input type="text" placeholder="제목을 입력하세요." class="form-control col-8" id="titleInput">
+					<input type="text" placeholder="제목을 입력하세요." class="form-control col-8" id="titleInput" value="${post.title }">
 				</div>
+				<!-- /title -->
+				<!-- contents -->
 				<div class="d-flex justify-content-center">
-					<textarea class="col-10 form-control" placeholder="내용을 입력하세요." rows="10" id="contentsInput"></textarea>
+					<textarea class="col-10 form-control" placeholder="내용을 입력하세요." rows="5" id="contentsInput">${post.contents }</textarea>
 				</div>
+				<!-- /contents -->
+				<!-- image -->
+				<c:if test="${post.imagePath != null}">
+					<div class="detail-image text-center px-5 pt-2">
+						<img height="200" width="640" alt="${post.title }" src="${post.imagePath }">
+					</div>
+				</c:if>
+				<!-- /image -->
+				<!-- button -->
 				<div class="pt-2">
-					<div class="pl-5 pb-3">	
+					<div class="pl-5 pb-2">	
 						 <button type="button" class="btn btn-danger ml-3" id="deleteBtn">삭제</button>
 					</div>
-					<div class="d-flex justify-content-between pl-5 pr-5">
+					<div class="d-flex justify-content-between px-5 pb-2">
 						<a href="/post/list-view" class="btn btn-secondary text-white ml-3">목록으로</a>
 						<button type="button" class="btn btn-secondary mr-3" id="saveBtn">수정</button>
 					</div>
 				</div>
+				<!-- /button -->
 			</div>
 		</section>
-		
 		<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
