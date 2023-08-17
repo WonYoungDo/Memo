@@ -70,6 +70,7 @@
 					type:"post"
 					, url:"/post/create"
 					, data:formData
+					, enctype:"multipart/form-data"
 					, processData:false // 파일 업로드 옵션
 					, contentType:false // 파일 업로드 옵션
 					, success:function(data) {
