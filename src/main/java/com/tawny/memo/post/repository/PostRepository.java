@@ -25,4 +25,14 @@ public interface PostRepository {
 	// (id값이 일치하는 한 행의 정보만 가져온다.)
 	public Post selectPost(@Param("id") int id);
 
+	
+	// 수정 
+	public int updatePost(
+			@Param("postId") int postId
+			, @Param("title") String title
+			, @Param("contents") String contents);
+	
+	
+	// 식제
+	public int deletePost(@Param("postId") int postId);
 }

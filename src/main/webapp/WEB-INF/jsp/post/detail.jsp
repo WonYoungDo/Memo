@@ -36,11 +36,11 @@
 				<!-- button -->
 				<div class="pt-2">
 					<div class="pl-5 pb-2">	
-						 <button type="button" class="btn btn-danger ml-3" id="deleteBtn">삭제</button>
+						 <button type="button" class="btn btn-danger ml-3" data-post-id="${post.id }" id="deleteBtn">삭제</button>
 					</div>
 					<div class="d-flex justify-content-between px-5 pb-2">
 						<a href="/post/list-view" class="btn btn-secondary text-white ml-3">목록으로</a>
-						<button type="button" class="btn btn-secondary mr-3" id="saveBtn">수정</button>
+						<button type="button" class="btn btn-secondary mr-3" data-post-id="${post.id }" id="saveBtn">수정</button>
 					</div>
 				</div>
 				<!-- /button -->
@@ -51,5 +51,64 @@
 	<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script>
+		$(document).ready(function() {
+			
+			// 삭제 버튼 클릭 이벤트
+			$("#deleteBtn").on("click", function() {
+				let postId = $(this).data("post-id");
+				
+				$.ajax({
+					type:"delete"
+					, url:"/post/delete"
+					, data:{"postId":postId}
+					, success:function(data) {
+						if(data.result == "success") {
+							location.href="/post/list-view";
+						} else {
+							alert("삭제 실패");
+						}
+					}
+					, error:function() {
+						alert("삭제 에러");
+					}
+				});
+			});	
+			
+			// 수정 버튼 클릭 이벤트
+			$("#saveBtn").on("click", function() {
+				// 제목, 메모 내용, 이미지
+				let	title = $("#titleInput").val();
+				let	contents = $("#contentsInput").val();
+				let postId = $(this).data("post-id");
+				
+				if(title == "") {
+					alert("제목을 입력하세요");
+					return;
+				}
+				if(contents == "") {
+					alert("내용을 입력하세요");
+					return;
+				}
+				
+				$.ajax({
+					type:"put"
+					, url:"/post/update"
+					, data:{"postId":postId, "title":title, "contents":contents}
+					, success:function(data) {
+						if(data.result == "success") {
+							location.href="/post/list-view";
+						} else {
+							alert("수정 실패");
+						}
+					}
+					, error:function() {
+						alert("수정 에러");
+					}
+				});
+			});
+		});
+	</script>
+
 </body>
 </html>

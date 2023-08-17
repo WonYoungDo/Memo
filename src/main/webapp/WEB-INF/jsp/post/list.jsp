@@ -24,11 +24,11 @@
 				<div class="momolist-list">
 					<table class="table text-center">
 						<thead>
-						<tr>
-							<th>No.</th>
-							<th>제목</th>
-							<th>작성 시간</th>
-						</tr>
+							<tr>
+								<th>No.</th>
+								<th>제목</th>
+								<th>작성 시간</th>
+							</tr>
 						</thead>
 						<tbody>
 							<c:forEach var="post" items="${postList }">

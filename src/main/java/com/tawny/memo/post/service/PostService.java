@@ -41,4 +41,29 @@ public class PostService {
 	public Post getPost(int id) { // 아이디 기반으로 조회는 한 행을 리턴한다.
 		return postRepository.selectPost(id);
 	}
+	
+	// 사용자가 내용을 수정하는 기능
+	public int updatePost(int postId, String title, String contents) {
+		return postRepository.updatePost(postId, title, contents);
+	}
+	
+	// 게시물 id를 기반으로 삭제하는 기능 
+	public int deletePost(int postId, int userId) {
+		
+		// 테이블에서 정보를 삭제해도 사진은 폴더에 저장되어 있으므로 추가적으로 처리해줘야 한다.
+		// 삭제 대상의 imagePath 경로를 얻어 온다
+		// 저장되어 있는 파일까지 같이 삭제
+		Post post = postRepository.selectPost(postId);
+		
+		// 게시물을 작성한 사용자와 로그인된 사용자의 아이디가 같을 때만 삭제
+		if(userId == post.getUserId()) { 
+			FileManager.removeFile(post.getImagePath());
+			return postRepository.deletePost(postId);			
+		} else { 
+			return 0;
+			
+		}
+	}
+	
+	
 }

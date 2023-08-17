@@ -10,8 +10,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class FileManager {
 	
-	// final 고정된 값의 변수는 대문자로 구성 
-	public static final String FILE_UPLOAD_PATH = "C:\\Users\\tawny\\Desktop\\JAVA-HELLOWORLD\\SpringProject\\upload\\memo";
+	// final 고정된 값의 변수는 대문자로 구성 // 저장할 파일 위치 지정
+	public static final String FILE_UPLOAD_PATH = "D:\\원영도\\SpringProject\\upload\\memo";
 	
 	// 파일 저장 -> 경로 리턴 // static을 사용해서 객체 생성 없이 사용 가능하도록 
 	public static String saveFile(int userId, MultipartFile file) {
@@ -60,10 +60,50 @@ public class FileManager {
 		
 		// 클라이언트에서 접근하는 경로 문자열
 		// 경로 규칙 : /image/10_23234234/test.png
-		//localhost:8090/image/10_23234234/test.png
+		//localhost:8090/images/10_23234234/test.png
 		
 		return "/images" + directoryName + file.getOriginalFilename();
-		
-		
 	}
+	
+	public static boolean removeFile(String filePath) { //localhost:8090/image/10_23234234/test.png
+		
+		// 파일 정보가 없는 경우
+		if(filePath == null) {
+			return false;
+		}
+		
+		// 실제 파일이 저장된 파일 경로 만들기
+		// //localhost:8090/image/10_23234234/test.png
+		// D:\\원영도\\SpringProject\\upload\\memo/10_23234234/test.png
+		// /images를 제거하고, 전체 경로에 이어 붙인다.
+		String fullFilePath = FILE_UPLOAD_PATH + filePath.replace("/images", "");
+		
+		// 경로를 관리하기 위한 객체 
+		Path path = Paths.get(fullFilePath);
+		
+		// 파일이 존재하는지 확인하는 조건문 필요
+		if(Files.exists(path)) {
+			
+			// 예외 처리가 필요
+			try { 
+				Files.delete(path);
+			} catch (IOException e) {
+				e.printStackTrace();
+				return false;
+			}
+		}
+		
+		Path dirPath = path.getParent();
+		if(Files.exists(dirPath)) {
+			
+			try {
+				Files.delete(dirPath);
+			} catch (IOException e) {
+				e.printStackTrace();
+				return false;
+			}
+		}
+		return true;
+	}
+	
 }
