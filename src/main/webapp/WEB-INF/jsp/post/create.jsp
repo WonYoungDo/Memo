@@ -28,7 +28,7 @@
 					<div class="pl-5 pb-3">	
 						 <input type="file" class="ml-3" id="fileInput">
 					</div>
-					<div class="d-flex justify-content-between pl-5 pr-5">
+					<div class="d-flex justify-content-between pl-5 pr-5 mb-2">
 						<a href="/post/list-view" class="btn btn-secondary text-white ml-3">목록으로</a>
 						<button type="button" class="btn btn-secondary mr-3" id="saveBtn">저장</button>
 					</div>

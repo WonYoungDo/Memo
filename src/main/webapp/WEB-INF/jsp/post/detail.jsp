@@ -15,24 +15,28 @@
 		<section class="contents d-flex justify-content-center">
 			<div class="memo-input col-8">
 				<h1 class="text-center font-weight-bold pt-3 pb-2">메모 보기</h1>
+			
 				<!-- title -->
 				<div class="d-flex justify-content-center align-items-center pb-2">
 					<h4 class="col-2 font-weight-bold mt-2">제목 : </h4>
 					<input type="text" placeholder="제목을 입력하세요." class="form-control col-8" id="titleInput" value="${post.title }">
 				</div>
 				<!-- /title -->
+				
 				<!-- contents -->
 				<div class="d-flex justify-content-center">
 					<textarea class="col-10 form-control" placeholder="내용을 입력하세요." rows="5" id="contentsInput">${post.contents }</textarea>
 				</div>
 				<!-- /contents -->
+				
 				<!-- image -->
 				<c:if test="${post.imagePath != null}">
-					<div class="detail-image text-center px-5 pt-2">
-						<img height="200" width="640" alt="${post.title }" src="${post.imagePath }">
+					<div class="d-flex justify-content-center">
+						<img alt="${post.title }" src="${post.imagePath }" class="w-50 h-50">
 					</div>
 				</c:if>
 				<!-- /image -->
+				
 				<!-- button -->
 				<div class="pt-2">
 					<div class="pl-5 pb-2">	
@@ -44,6 +48,7 @@
 					</div>
 				</div>
 				<!-- /button -->
+				
 			</div>
 		</section>
 		<c:import url="/WEB-INF/jsp/include/footer.jsp"/>

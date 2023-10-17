@@ -15,11 +15,13 @@
 		<c:import url="/WEB-INF/jsp/include/header.jsp"/>
 		<section class="contents">
 			<div class="memolist px-5">
+			
 				<!-- 제목 -->
 				<div class="memolist-title text-center my-2">
-					<h1>메모리스트</h1>
+					<h1>메모 리스트</h1>
 				</div>
 				<!-- 제목 -->
+				
 				<!-- 메모 리스트 -->
 				<div class="momolist-list">
 					<table class="table text-center">
@@ -42,9 +44,10 @@
 					</table>
 				</div>
 				<!-- 메모 리스트 -->
+				
 				<!-- 작성 버튼 -->
-				<div class="memolist-button d-flex justify-content-end">
-					<a href="/post/create-view" class="btn btn-secondary">작성</a>			
+				<div class="memolist-button d-flex justify-content-end mb-2">
+					<a href="/post/create-view" class="btn btn-secondary form-control col-1">작성</a>			
 				</div>
 				<!-- 작성 버튼 -->
 				

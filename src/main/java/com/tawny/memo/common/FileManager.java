@@ -11,7 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class FileManager {
 	
 	// final 고정된 값의 변수는 대문자로 구성 // 저장할 파일 위치 지정
-	public static final String FILE_UPLOAD_PATH = "D:\\원영도\\SpringProject\\upload\\memo";
+	public static final String FILE_UPLOAD_PATH = "C:\\Users\\tawny\\Desktop\\JAVA-HELLOWORLD\\SpringProject\\upload\\memo";
 	
 	// 파일 저장 -> 경로 리턴 // static을 사용해서 객체 생성 없이 사용 가능하도록 
 	public static String saveFile(int userId, MultipartFile file) {
