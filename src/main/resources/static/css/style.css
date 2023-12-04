@@ -9,7 +9,8 @@ header {
 	height: 80px;
 	background-color: #dddddd;
 }
-.content > memo-input {
+
+.content > .memo-input {
 	height: 500px;
 }
 
